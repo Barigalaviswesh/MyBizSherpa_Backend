@@ -25,7 +25,7 @@ app = FastAPI(
 origins = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
-    "https://my-biz-sherpa-frontend.vercel.app/"
+    "https://my-biz-sherpa-frontend.vercel.app"
 ]
 
 app.add_middleware(
