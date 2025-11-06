@@ -38,6 +38,24 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Root endpoint
+@app.get("/")
+async def root():
+    return {
+        "message": "MyBizSherpa Backend API",
+        "status": "running",
+        "version": "1.0.0",
+        "endpoints": {
+            "transcript": "/api/transcript",
+            "icebreaker": "/api/icebreaker",
+            "health": "/health"
+        }
+    }
+
+@app.get("/health")
+async def health_check():
+    return {"status": "healthy", "service": "MyBizSherpa Backend"}
+
 # Routers
 app.include_router(transcript.router, prefix="/api", tags=["Transcript"])
 app.include_router(icebreaker.router, prefix="/api", tags=["Icebreaker"])
